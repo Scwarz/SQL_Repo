@@ -79,6 +79,15 @@ WHERE salary < (SELECT salary FROM employees WHERE employee_id = 182);
 SELECT e.first_name, m.first_name FROM employees e JOIN employees m
 ON e.manager_id = m.employee_id;
 
+-- 17.	Write a SQL query to display the department name, city, and state province for each department.
+SELECT d.department_name, l.city, l.state_province FROM departments d JOIN locations l
+ON d.location_id = l.location_id;
+
+-- 18.	Write a query to identify all the employees who earn more than the average and who work in any of the IT departments.
+SELECT * FROM employees e JOIN departments d
+ON e.department_id = d.department_id
+WHERE salary > (SELECT AVG(salary) FROM employees WHERE department_name LIKE '%IT%');
 
 
-SELECT * FROM employees; 
+
+SELECT * FROM employees;
